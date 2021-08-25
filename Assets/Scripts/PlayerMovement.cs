@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float gravity;
     CharacterController character;
     Animator animator;
+    [SerializeField] ParticleSystem PlayerParticle;
+
     public static PlayerMovement instance;
     private void Awake()
     {
@@ -32,5 +34,11 @@ public class PlayerMovement : MonoBehaviour
         transform.Rotate(Vector3.up, horizotal * turnSpeed * Time.deltaTime);
         character.SimpleMove(transform.forward*vertical  * playerSpeed * Time.deltaTime);
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            PlayerParticle.Play();
+        }
+    }
 }

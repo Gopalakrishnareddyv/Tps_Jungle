@@ -128,3 +128,4 @@ MonoBehaviour:
   bulletSpeed: 10
   bulletrb: {fileID: 3959972179872034706}
   lifeTime: 5
+  PlayerParticle: {fileID: 0}

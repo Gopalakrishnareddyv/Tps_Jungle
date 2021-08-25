@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    
+    [SerializeField] ParticleSystem enemyParticle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,7 @@ public class PlayerShooting : MonoBehaviour
                 var enemyHealth = hit.collider.gameObject.GetComponent<EnemyHealth>();
                 if (enemyHealth != null)
                 {
+                    enemyParticle.Play();
                     enemyHealth.EnemyDamage(1);
                 }
             }

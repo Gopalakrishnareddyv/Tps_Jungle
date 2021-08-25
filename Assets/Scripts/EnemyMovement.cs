@@ -18,11 +18,15 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] Transform firePoint;
     [SerializeField] float BtwShots;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        startingPosition = this.transform.position;
+
+    }
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
         anim=GetComponent<Animator>();
-        startingPosition = this.transform.position;
     }
 
     // Update is called once per frame
@@ -47,10 +51,11 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             nav.SetDestination(startingPosition);
-            anim.SetBool("Walk", false);
+            if (Vector3.Distance(this.transform.position, startingPosition) < 3)
+            {
+                anim.SetBool("Walk", false);
+            }
         }
-        
-        
     }
     public void Fire()
     {
