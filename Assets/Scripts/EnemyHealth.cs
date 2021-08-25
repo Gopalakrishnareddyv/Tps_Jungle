@@ -6,13 +6,14 @@ public class EnemyHealth : MonoBehaviour
 {
 
     [SerializeField]int health = 5;
+    [SerializeField] ParticleSystem particle;
     public void EnemyDamage(int damage)
     {
-        var enemyCount = GameObject.Find("EnemyCount").GetComponent<EnemyCount>();
         health -= damage;
+        particle.Play();
         if (health <= 0)
         {
-            enemyCount.Increment();
+            EnemyCount.instance.Increment();
             this.gameObject.SetActive(false);
         }
     }

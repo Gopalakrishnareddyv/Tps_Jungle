@@ -7,6 +7,11 @@ public class EnemyCount : MonoBehaviour
 {
     int enemy;
     [SerializeField] Text enemyCountText;
+    public static EnemyCount instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     public void Increment()
     {
         enemy++;
