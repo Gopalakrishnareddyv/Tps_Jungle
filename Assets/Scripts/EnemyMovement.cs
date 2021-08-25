@@ -47,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             nav.SetDestination(startingPosition);
-            if (transform.position == startingPosition) ;
+            anim.SetBool("Walk", false);
         }
         
         
